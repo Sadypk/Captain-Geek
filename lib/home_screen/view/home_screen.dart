@@ -1,8 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:captain_geek/home_screen/view/widgets/location_category_widget.dart';
-import 'package:captain_geek/home_screen/view/widgets/tour_location_card.dart';
+import 'package:captain_geek/home_screen/view/widgets/comics_category_widget.dart';
 import 'package:captain_geek/home_screen/view_model/character_view_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -152,9 +151,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                   Expanded(child: TabBarView(
                     controller: _tabController,
                     children: [
-                      LocationCategoryWidget(character: CharacterViewModel.dc,),
-                      LocationCategoryWidget(character: CharacterViewModel.marvel,),
-                      LocationCategoryWidget(character: CharacterViewModel.manga,)
+                      ComicsCategoryWidget(character: CharacterViewModel.dc,),
+                      ComicsCategoryWidget(character: CharacterViewModel.marvel,),
+                      ComicsCategoryWidget(character: CharacterViewModel.manga,)
                     ],
                   ))
                   // locationSlideShow

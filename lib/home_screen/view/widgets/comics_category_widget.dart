@@ -1,17 +1,18 @@
-import 'package:captain_geek/location_picker_pageview.dart';
+import 'package:captain_geek/character_details_screen/view/character_details.dart';
+import 'package:captain_geek/character_picker_pageview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sequence_animation/flutter_sequence_animation.dart';
 import 'package:captain_geek/home_screen/model/character_model.dart';
 import 'package:get/get.dart';
 
-class LocationCategoryWidget extends StatefulWidget {
+class ComicsCategoryWidget extends StatefulWidget {
   final List<CharacterModel> character;
-  LocationCategoryWidget({this.character});
+  ComicsCategoryWidget({this.character});
   @override
-  _LocationCategoryWidgetState createState() => _LocationCategoryWidgetState();
+  _ComicsCategoryWidgetState createState() => _ComicsCategoryWidgetState();
 }
 
-class _LocationCategoryWidgetState extends State<LocationCategoryWidget> with SingleTickerProviderStateMixin{
+class _ComicsCategoryWidgetState extends State<ComicsCategoryWidget> with SingleTickerProviderStateMixin{
   SequenceAnimation sequenceAnimation;
 
   AnimationController _imageScaleController;
@@ -104,17 +105,20 @@ class _LocationCategoryWidgetState extends State<LocationCategoryWidget> with Si
                           opacity: sequenceAnimation["imageOne"].value,
                           child: Stack(
                             children: [
-                              Container(
-                                height: 160*sequenceAnimation["imageOne"].value,
-                                width: topImageOne*sequenceAnimation["imageOne"].value,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.blue,
-                                    image: DecorationImage(
-                                        image: AssetImage(widget.character[0].image),
-                                        fit: BoxFit.cover
-                                    ),
-                                    boxShadow: boxShadow
+                              InkWell(
+                                onTap: (){Get.to(CharacterDetails(characterModel: widget.character[0],));},
+                                child: Container(
+                                  height: 160*sequenceAnimation["imageOne"].value,
+                                  width: topImageOne*sequenceAnimation["imageOne"].value,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.blue,
+                                      image: DecorationImage(
+                                          image: AssetImage(widget.character[0].image),
+                                          fit: BoxFit.cover
+                                      ),
+                                      boxShadow: boxShadow
+                                  ),
                                 ),
                               ),
                               Positioned(
@@ -308,7 +312,7 @@ class _LocationCategoryWidgetState extends State<LocationCategoryWidget> with Si
           ),
           SizedBox(height: 20,),
           FlatButton(onPressed: (){
-            Get.to(LocationPickerPageView(list: widget.character,));
+            Get.to(CharacterPickerPageView(list: widget.character,));
           },
             child: Container(
               height: 45,
